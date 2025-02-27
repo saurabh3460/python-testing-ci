@@ -1,5 +1,11 @@
 pipeline {
-   agent { dockerfile true }
+   agent {         
+      dockerfile {
+            filename 'Dockerfile'            // Use your Dockerfile in the repo root
+            dir '.'                         // Build context (root directory)
+            additionalBuildArgs '--no-cache' // Optional: pass Docker build arguments
+        } 
+      }
 
    stages {
       stage('Tests') {
